@@ -9,11 +9,8 @@ class SlackIdentity extends StatefulWidget {
 }
 
 class _SlackIdentityState extends State<SlackIdentity> {
-  final Uri githubProfileUrl = Uri(
-    scheme: 'https',
-    host: 'github.com',
-    path: 'mjsalisu',
-  );
+  final Uri githubProfileUrl =
+      Uri(scheme: 'https', host: 'github.com', path: 'mjsalisu');
   final String slackProfilePicture =
       'https://ca.slack-edge.com/T05FFAA91JP-U05RYHPNSSC-50c3033b4fbb-512';
 
@@ -28,9 +25,16 @@ class _SlackIdentityState extends State<SlackIdentity> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
-              CircleAvatar(
-                backgroundImage: NetworkImage(slackProfilePicture),
-                radius: 80,
+              Container(
+                width: 160,
+                height: 160,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(slackProfilePicture),
+                  ),
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -88,7 +92,7 @@ class _SlackIdentityState extends State<SlackIdentity> {
                 title: Text('Start Date'),
                 subtitle: Text('Sep 7, 2023 (2 hours ago)'),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   _launchURL(githubProfileUrl);
